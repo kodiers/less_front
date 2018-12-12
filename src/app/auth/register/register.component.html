@@ -1,3 +1,6 @@
+<div *ngIf="errorMessage" style="color: red; font-weight: bolder">
+  {{errorMessage.title}}
+</div>
 <form #registerForm="ngForm" (ngSubmit)="registerSubmit(registerForm)">
   <label>username</label>
   <input type="text" name="username" ngModel required minlength="4" maxlength="16" #username="ngModel">
