@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import {AuthRoutingModule} from './auth-routing.module';
 import { PasswordRulesDirective } from './validators/password-rules.directive';
 import {AuthService} from './services/auth.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {AuthService} from './services/auth.service';
   ],
   declarations: [
     RegisterComponent,
-    PasswordRulesDirective
+    PasswordRulesDirective,
+    LoginComponent
   ],
   providers: [
     AuthService

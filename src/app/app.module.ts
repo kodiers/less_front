@@ -9,6 +9,7 @@ import {SharedModule} from './shared/shared.module';
 import { WelcomeComponent } from './common/welcome/welcome.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import {AuthModule} from './auth/auth.module';
+import {ContentModule} from './content/content.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {AuthModule} from './auth/auth.module';
   imports: [
     BrowserModule,
     AuthModule,
+    ContentModule,
     AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,

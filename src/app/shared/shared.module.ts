@@ -5,6 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { HeaderComponent } from './header/header.component';
 import {RouterModule} from '@angular/router';
+import {AuthService} from '../auth/services/auth.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import {RouterModule} from '@angular/router';
   ],
   exports: [
     HeaderComponent
-  ]
+  ],
+  providers: [AuthService]
 })
 export class SharedModule {}
