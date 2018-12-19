@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {AuthService} from '../services/auth.service';
 
@@ -11,11 +11,18 @@ import {AuthService} from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   errorMessage: string = null;
+  infoMessage: string = null;
 
   constructor(private authSvc: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['registered'] === 'success') {
+        this.infoMessage = 'You\'ve been successfully registered. Please login!';
+      }
+    });
   }
 
   loginSubmit(form: NgForm) {

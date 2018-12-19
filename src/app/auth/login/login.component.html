@@ -1,5 +1,8 @@
 <div *ngIf="errorMessage" style="color: red; font-weight: bolder">
-  {{errorMessage.title}}
+  {{errorMessage}}
+</div>
+<div *ngIf="infoMessage" style="color: green; font-weight: bolder">
+  {{infoMessage}}
 </div>
 <form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
   <label>username</label>

@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import * as moment from 'moment';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 import {API_URL} from '../../constants';
 
@@ -15,6 +16,8 @@ export class AuthService {
   private tokenKey = 'mjs_token';
 
   protected USERS_URL = API_URL + '/api/v1/users';
+
+  authChanged = new Subject<boolean>();
 
   constructor(private http: HttpClient) {
     if (!this.isTokenExpired()) {
@@ -33,6 +36,7 @@ export class AuthService {
       map((response: any) => {
         const token = response.token;
         this.setToken(token);
+        this.authChanged.next(true);
         return token;
       })
     );
@@ -66,6 +70,7 @@ export class AuthService {
   }
 
   logout() {
+    this.authChanged.next(false);
     this.token = null;
     localStorage.removeItem(this.tokenKey);
   }
