@@ -1,3 +1,14 @@
 <mat-toolbar>
-  <span>My Application</span>
+  <a routerLink="/">My Application</a>
+
+  <a>One page</a>
+
+  <a>Other page</a>
+  <ng-container *ngIf="!isAuth">
+    <a style="margin-left: 20px; color: red" routerLink="/register">Register</a>
+    <a style="margin-left: 20px; color: red" routerLink="/login">Login</a>
+  </ng-container>
+  <a style="margin-left: 20px; color: red" routerLink="/logout" *ngIf="isAuth">Logout</a>
+
+
 </mat-toolbar>

@@ -1,0 +1,22 @@
+<div *ngIf="errorMessage" style="color: red; font-weight: bolder">
+  {{errorMessage}}
+</div>
+<div *ngIf="infoMessage" style="color: green; font-weight: bolder">
+  {{infoMessage}}
+</div>
+<form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
+  <label>username</label>
+  <input type="text" name="username" ngModel required minlength="4" maxlength="16" #username="ngModel">
+  <div *ngIf="!username.valid && username.touched" style="color: red">
+    "Username should have min 4 and max 16"
+  </div>
+  <br>
+  <label>password</label>
+  <input type="password" name="password" ngModel required appPasswordRules #password="ngModel">
+  <div *ngIf="!password.valid && password.touched && password.errors.viloaterules === true" style="color: red">
+    Password violate rules.
+  </div>
+  <br>
+  <br>
+  <button type="submit" [disabled]="!loginForm.valid || loginForm.untouched">login</button>
+</form>
